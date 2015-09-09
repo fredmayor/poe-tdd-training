@@ -35,8 +35,8 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function testSet()
     {
-        //$test = $this->bag->set('foo','bar');
-        //$this->assertEquals();
+        $this->bag->set('toto','tata');
+        $this->assertEquals(3, $this->bag->count());
 
     }
 
