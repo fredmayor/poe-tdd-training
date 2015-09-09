@@ -10,19 +10,23 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->bag = new ParameterBag(array('foo' => 'bar', 'baz' => '123'));
+
+        $this->bag = new ParameterBag(array('foo' => 'bar'));
+
     }
 
     public function testCount()
     {
-
+        $this->assertEquals(1, $this->bag->count('foo'));
     }
 
     public function testGet()
     {
+        // will pass
         $this->assertEquals('bar', $this->bag->get('foo'));
-        $this->assertEquals(null, $this->bag->get('pony'));
-        $this->assertEquals('pink', $this->bag->get('pony', 'pink'));
+
+        // will fail
+        //$this->assertEquals('lol', $bag->get('foo'));
     }
 
     public function testGetInt()
