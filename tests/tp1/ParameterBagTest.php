@@ -10,14 +10,12 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-
-        $this->bag = new ParameterBag(array('foo' => 'bar'));
-
+        $this->bag = new ParameterBag(array('foo' => 'bar', 'baz' => '2'));
     }
 
     public function testCount()
     {
-        $this->assertEquals(1, $this->bag->count('foo'));
+        $this->assertEquals(2, $this->bag->count());
     }
 
     public function testGet()
@@ -31,17 +29,21 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function testGetInt()
     {
+        $this->assertEquals(2, $this->bag->getInt('baz'));
 
     }
 
     public function testSet()
     {
+        //$test = $this->bag->set('foo','bar');
+        //$this->assertEquals();
 
     }
 
     public function testHas()
     {
-
+        $this->assertEquals(true, $this->bag->has('foo'));
+        $this->assertEquals(false, $this->bag->has('poney'));
     }
 
     public function testRemove()
@@ -51,12 +53,12 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function testAll()
     {
-
+        $this->assertEquals(array('foo' => 'bar', 'baz' => '2'), $this->bag->all());
     }
 
     public function testKeys()
     {
-
+        $this->assertEquals(array('foo', 'baz'), $this->bag->keys());
     }
 
     public function testAdd()
