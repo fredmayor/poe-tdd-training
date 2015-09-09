@@ -48,7 +48,8 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function testRemove()
     {
-
+        $this->bag->remove('foo');
+        $this->assertEquals(1, $this->bag->count());
     }
 
     public function testAll()
@@ -63,6 +64,8 @@ class ParameterBagTest extends \PHPUnit_Framework_TestCase
 
     public function testAdd()
     {
-
+        $montableau = array('toto' => 'tata');
+        $this->bag->add($montableau);
+        $this->assertEquals(3, $this->bag->count());
     }
 }
