@@ -6,14 +6,27 @@ use tp2\Person;
 
 class Enterprise
 {
+    /**
+     * Enterprise storage.
+     *
+     * @var array
+     */
+    protected $enterprise;
+
+    public function __construct(array $enterprise = array()) 
+    {
+        $this->enterprise = $enterprise;
+    }
+
     public function add(Person $person)
     {
-        // TO IMPLEMENT
+        array_push($this->enterprise, $person);
     }
 
     public function remove(Person $personToRemove)
     {
-        // TO IMPLEMENT
+        $result = array_search($personToRemove, $this->enterprise);
+        unset($this->enterprise[$result]);
     }
 
     /**
@@ -21,6 +34,11 @@ class Enterprise
      */
     public function employ(Person $person)
     {
-        // TO IMPLEMENT
+        foreach ($this->enterprise as $p) {
+            if($p === $person) {
+                return true;
+            }
+        }
+        return false;
     }
 }
